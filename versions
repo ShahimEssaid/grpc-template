@@ -1,0 +1,8 @@
+# Versions for the tooling
+PROTOC=protoc_24.3
+
+# Versions for the built packages for each language.
+PACKAGE_VER=0.0.1
+MVN_VER=${PACKAGE_VER}-SNAPSHOT
+JS_VER=${PACKAGE_VER}
+PY_VER=${PACKAGE_VER}
