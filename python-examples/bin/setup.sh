@@ -15,6 +15,9 @@ done
 #. grpcenv.sh
 
 cd python-examples
-bin/setup.sh
-. .venv/bin/activate
-python client.py
+if [[ ! -d .venv ]]; then
+  python3 -m venv .venv
+  . .venv/bin/activate
+  pip install -U pip poetry
+  poetry -C ../python install
+fi
