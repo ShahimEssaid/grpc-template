@@ -14,6 +14,13 @@ while [[ ! -r grpcenv.sh ]]; do
 done
 . grpcenv.sh
 
-cd python
-rm -rf dist
-poetry -vvv publish --build --dry-run -u __token__
+cd java
+./mvnw clean deploy
+
+
+
+
+
+
+
+
