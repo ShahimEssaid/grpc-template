@@ -18,6 +18,10 @@ shopt -s globstar
 
 . grpcenv-project.sh
 
+# Versions for the built packages for each language.
+TMPLT_PACKAGE_VER=${TMPLT_PACKAGE_VER:-0.0.1}
+
+# Root for tool files
 TMPLT_GRPC_TOOLS=${TMPLT_GRPC_TOOLS:-${TMPLT_ROOT}/tools/${HOSTTYPE}_${OSTYPE}}
 
 # =============================================================================
@@ -48,21 +52,15 @@ TMPL_PYTHON_TOOLS_VER=${TMPL_PYTHON_TOOLS_VER:-1.58.0}
 TMPL_PYTHON_POETRY_VER=${TMPL_PYTHON_POETRY_VER:-1.6.1}
 
 
+# =============================================================================
+# Node
+TMPL_NODE_TOOLS=grpc-tools
+TMPL_NODE_TOOLS_VER=1.12.4
 
 
-# protoc_gen_grpc-java
-TMPLT_GRPC_JAVA_VER=${TMPLT_GRPC_JAVA_VER:-1.58}
 
-# Versions for the built packages for each language.
-TMPLT_PACKAGE_VER=${TMPLT_PACKAGE_VER:-0.0.1}
-
-# Java version
-TMPLT_MVN_VER=${TMPLT_MVN_VER:-${TMPLT_PACKAGE_VER}-SNAPSHOT}
-
-# Python version
-#PY_VER=${PY_VER:-${PACKAGE_VER}}
-
-
+# =============================================================================
+# Setting up the virtual environment for the protos compile
 if [[ ${TMPLT_GRPCENV:-setup} == setup || ! -d .grpcenv ]]; then
     if [[ ! -d .grpcenv ]]; then
       python3 -m venv .grpcenv
@@ -76,22 +74,21 @@ if [[ ${TMPLT_GRPCENV:-setup} == setup || ! -d .grpcenv ]]; then
 
     ##  Python related
     #(pip list | grep -F 'grpcio ') > /dev/null ||  { echo Running pip install grpcio; pip install grpcio==1.58.0; }
-    (pip list | grep -F 'grpcio-tools ') > /dev/null || { echo "Running pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}";  pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}; }
-    (pip list | grep -F 'poetry ') > /dev/null || { echo Running pip install poetry==${TMPL_PYTHON_POETRY_VER};  pip install poetry==${TMPL_PYTHON_POETRY_VER}; }
+    (pip list | grep "grpcio-tools *${TMPL_PYTHON_TOOLS_VER}") > /dev/null || { echo "Running pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}";  pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}; }
+    (pip list | grep "poetry ") > /dev/null || { echo Running pip install poetry==${TMPL_PYTHON_POETRY_VER};  pip install poetry==${TMPL_PYTHON_POETRY_VER}; }
 
 
-#    ##  Node related
-#    (pip list | grep -F 'nodeenv ') > /dev/null || { echo Running pip install nodeenv;  pip install nodeenv; }
-#    node_path=$(which node || true)
-#    root_path=$(dirname "$(pwd)")
-#    if [[ "$node_path" == "$root_path"* ]]; then
-#      echo "nodejs $(node --version) already installed at $(which node)"
-#    else
-#      echo "Installing nodejs"
-#      nodeenv -p -n lts
-#    fi
-#    (npm list | grep -F 'grpc-tools@1.12.4') > /dev/null || { echo "Running npm install -g grpc-tools@1.12.4";  npm install -g grpc-tools@1.12.4; }
-
+    ##  Node related
+    (pip list | grep 'nodeenv ') > /dev/null || { echo Running pip install nodeenv;  pip install nodeenv; }
+    node_path=$(which node || true)
+    root_path=$(dirname "$(pwd)")
+    if [[ "$node_path" == "$root_path"* ]]; then
+      echo "nodejs $(node --version) already installed at $(which node)"
+    else
+      echo "Installing nodejs LTS"
+      nodeenv -p -n lts
+    fi
+    (npm list -g | grep "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}") > /dev/null || { echo "Running npm install -g "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}"";  npm install -g "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}"; }
 fi
 
 set +u  # needed to avoid errors

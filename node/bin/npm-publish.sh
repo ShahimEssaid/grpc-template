@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-#set -x
-set -e
-set -u
-set -o pipefail
-set -o noclobber
-shopt -s nullglob
-shopt -s globstar
 
 # stack overflow #59895
 SOURCE="${BASH_SOURCE[0]}"
@@ -15,14 +8,28 @@ while [ -h "$SOURCE" ]; do
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
-cd "$DIR"/..
-. ../.env
 
-../bin/setup-environment.sh
+while [[ ! -r grpcenv.sh ]]; do
+  cd ..
+done
+#. grpcenv.sh
 
-#rm -rf src/template_grpc
+cd node
+bin/setup.sh
 
 set +u
-. ../.venv/bin/activate
+. .venv/bin/activate
 
-npm publish --dry-run
+npm publish
+
+
+
+
+
+
+
+
+
+
+
+

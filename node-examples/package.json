@@ -1,0 +1,14 @@
+{
+  "name": "grpc-template-node-examples",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shahim Essaid <shahim@essaid.com>",
+  "license": "ISC",
+  "dependencies": {
+    "grpc-template-node": "file:grpc-template-node-0.0.1.tgz"
+  }
+}

@@ -4,6 +4,9 @@
     <option name="sdkName" value="Python 3.10 (template-grpc)" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES5" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

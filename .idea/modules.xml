@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/grpc-template.iml" filepath="$PROJECT_DIR$/.idea/grpc-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/node/node.iml" filepath="$PROJECT_DIR$/node/node.iml" />
+      <module fileurl="file://$PROJECT_DIR$/node-examples/node-examples.iml" filepath="$PROJECT_DIR$/node-examples/node-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/python-examples/python-examples.iml" filepath="$PROJECT_DIR$/python-examples/python-examples.iml" />
     </modules>
   </component>

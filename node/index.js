@@ -1,7 +1,4 @@
-module.exports = {
-    ...require('src/template_grpc/v0/hello_pb'),
-    ...require('src/template_grpc/v0/hello_grpc_pb')
+module.exports.v0 = {
+    ...require('./src/grpc_template/v0/hello_pb'),
+    ...require('./src/grpc_template/v0/hello_grpc_pb')
 }
-
- = require('src/template_grpc/v0/hello_pb')
-

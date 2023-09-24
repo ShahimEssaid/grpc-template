@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$/node-examples" libraries="{Node.js Core, template-grpc/node-examples/.venv/lib/node_modules, template-grpc/node-examples/.venv/lib64/node_modules}" />
+    <file url="file://$PROJECT_DIR$/node-examples/.venv/lib" libraries="{template-grpc/node-examples/.venv/lib/node_modules}" />
+    <file url="file://$PROJECT_DIR$/node-examples/.venv/lib64" libraries="{template-grpc/node-examples/.venv/lib64/node_modules}" />
+    <excludedPredefinedLibrary name="HTML" />
+    <excludedPredefinedLibrary name="template-grpc/.grpcenv/lib/node_modules" />
+    <excludedPredefinedLibrary name="template-grpc/.grpcenv/lib64/node_modules" />
     <excludedPredefinedLibrary name="template-grpc/.grpcenv/src/node-v18.18.0-linux-x64/lib/node_modules" />
   </component>
 </project>
