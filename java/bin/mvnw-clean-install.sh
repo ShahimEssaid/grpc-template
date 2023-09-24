@@ -15,8 +15,14 @@ while [ -h "$SOURCE" ]; do
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
-cd "$DIR"/..
-. ../bin/.env
+cd "${DIR}/.."
 
-./mvnw clean deploy
+./mvnw clean install
+
+
+
+
+
+
+
 

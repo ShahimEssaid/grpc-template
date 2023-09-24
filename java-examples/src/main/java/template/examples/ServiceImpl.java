@@ -1,8 +1,9 @@
 package template.examples;
 
+import grpc_template.v0.Hello;
+import grpc_template.v0.HelloServiceGrpc;
 import io.grpc.stub.StreamObserver;
-import template_grpc.v0.Hello;
-import template_grpc.v0.HelloServiceGrpc;
+
 
 class ServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 

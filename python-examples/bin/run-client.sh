@@ -15,8 +15,14 @@ while [ -h "$SOURCE" ]; do
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
 DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
-cd "$DIR"/..
-. ../bin/.env
+cd "${DIR}/.."
 
-./mvnw clean package
+if [[ ! -d .venv ]]; then
+  python3 -m venv .venv
+  . .venv/bin/activate
+  pip install -U pip poetry
+  poetry -C ../python install
+fi
 
+. .venv/bin/activate
+python client.py

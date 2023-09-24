@@ -17,11 +17,9 @@ done
 DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 cd "$DIR"/..
 
-. environment
+. grpcenv.sh
 
-../bin/setup-environment.sh
-
-rm -rf src/template_grpc
+rm -rf src/*
 
 set +u  # needed to avoid error due to undefined variables in the .venv environment
 . ../.venv/bin/activate

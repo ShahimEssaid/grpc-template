@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-grpc-template = {path = "../python"}
+grpc-template = "^0.0.1"
 
 
 [build-system]

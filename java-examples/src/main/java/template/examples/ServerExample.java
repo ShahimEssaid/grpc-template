@@ -2,8 +2,7 @@ package template.examples;
 
 import io.grpc.*;
 import io.grpc.stub.StreamObserver;
-import template_grpc.v0.Hello;
-import template_grpc.v0.HelloServiceGrpc;
+
 
 import java.io.IOException;
 

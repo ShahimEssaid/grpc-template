@@ -1,9 +1,10 @@
-package template.client;
+package template.examples;
 
+import grpc_template.v0.Hello;
+import grpc_template.v0.HelloServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import template_grpc.v0.Hello;
-import template_grpc.v0.HelloServiceGrpc;
+
 
 public class ClientExample {
     public static void main(String[] args) {

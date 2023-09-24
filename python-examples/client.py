@@ -1,5 +1,5 @@
-import template_grpc.v0.hello_pb2 as messages
-import template_grpc.v0.hello_pb2_grpc as client
+import grpc_template.v0.hello_pb2 as messages
+import grpc_template.v0.hello_pb2_grpc as client
 import grpc
 
 request = messages.HelloRequest()

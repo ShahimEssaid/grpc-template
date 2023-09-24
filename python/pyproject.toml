@@ -5,7 +5,7 @@ description = ""
 authors = ["Shahim Essaid <shahim@essaid.com>"]
 readme = "README.md"
 packages = [
-    {include = "template_grpc",  from = "src"}
+    {include = "grpc_template",  from = "src"}
 ]
 
 [tool.poetry.dependencies]

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 import "google/protobuf/any.proto";
 
-package template_grpc.v0;
+package grpc_template.v0;
 
 service HelloService {
   rpc SayHello (HelloRequest) returns (HelloResponse);
