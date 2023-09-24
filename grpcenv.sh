@@ -28,18 +28,24 @@ TMPLT_PROTOC=${TMPLT_GRPC_TOOLS}/protoc_${TMPLT_PROTOC_VER}
 TMPLT_PROTOC_IMPORTS=${TMPLT_ROOT}/proto-imports/protoc_${TMPLT_PROTOC_VER}
 
 # =============================================================================
-# project protoc
+# project .proto files
 
 TMPL_PROTOS=${TMPL_PROTOS:-protos}
 
 # =============================================================================
-# Java example
+# Java
 
 TMPL_JAVA_GRPC_VER=${TMPL_JAVA_GRPC_VER:-1.58.0}
 TMPL_JAVA_GRPC_GEN=${TMPLT_GRPC_TOOLS}/protoc-gen-grpc-java-${TMPL_JAVA_GRPC_VER}
 TMPL_JAVA_OUT=${TMPL_JAVA_OUT:-java/src/main/java}
 
 
+# =============================================================================
+# Python
+
+TMPL_PYTHON_TOOLS=${TMPL_PYTHON_TOOLS:-grpcio-tools}
+TMPL_PYTHON_TOOLS_VER=${TMPL_PYTHON_TOOLS_VER:-1.58.0}
+TMPL_PYTHON_POETRY_VER=${TMPL_PYTHON_POETRY_VER:-1.6.1}
 
 
 
@@ -70,21 +76,21 @@ if [[ ${TMPLT_GRPCENV:-setup} == setup || ! -d .grpcenv ]]; then
 
     ##  Python related
     #(pip list | grep -F 'grpcio ') > /dev/null ||  { echo Running pip install grpcio; pip install grpcio==1.58.0; }
-    (pip list | grep -F 'grpcio-tools ') > /dev/null || { echo Running pip install grpcio-tools;  pip install grpcio-tools==1.58.0; }
-    (pip list | grep -F 'poetry ') > /dev/null || { echo Running pip install grpcio-tools;  pip install poetry; }
+    (pip list | grep -F 'grpcio-tools ') > /dev/null || { echo "Running pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}";  pip install ${TMPL_PYTHON_TOOLS}==${TMPL_PYTHON_TOOLS_VER}; }
+    (pip list | grep -F 'poetry ') > /dev/null || { echo Running pip install poetry==${TMPL_PYTHON_POETRY_VER};  pip install poetry==${TMPL_PYTHON_POETRY_VER}; }
 
 
-    ##  Node related
-    (pip list | grep -F 'nodeenv ') > /dev/null || { echo Running pip install nodeenv;  pip install nodeenv; }
-    node_path=$(which node || true)
-    root_path=$(dirname "$(pwd)")
-    if [[ "$node_path" == "$root_path"* ]]; then
-      echo "nodejs $(node --version) already installed at $(which node)"
-    else
-      echo "Installing nodejs"
-      nodeenv -p -n lts
-    fi
-    (npm list | grep -F 'grpc-tools@1.12.4') > /dev/null || { echo "Running npm install -g grpc-tools@1.12.4";  npm install -g grpc-tools@1.12.4; }
+#    ##  Node related
+#    (pip list | grep -F 'nodeenv ') > /dev/null || { echo Running pip install nodeenv;  pip install nodeenv; }
+#    node_path=$(which node || true)
+#    root_path=$(dirname "$(pwd)")
+#    if [[ "$node_path" == "$root_path"* ]]; then
+#      echo "nodejs $(node --version) already installed at $(which node)"
+#    else
+#      echo "Installing nodejs"
+#      nodeenv -p -n lts
+#    fi
+#    (npm list | grep -F 'grpc-tools@1.12.4') > /dev/null || { echo "Running npm install -g grpc-tools@1.12.4";  npm install -g grpc-tools@1.12.4; }
 
 fi
 
@@ -93,7 +99,7 @@ set +u  # needed to avoid errors
 set -u
 
 
-if [[ ! -z ${DEBUG:-} ]]; then
+if [[ -n ${DEBUG:-} ]]; then
   ( set -o posix ; set ) | sort | grep TMPLT_
 fi
 

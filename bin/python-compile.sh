@@ -14,13 +14,13 @@ while [[ ! -r grpcenv.sh ]]; do
 done
 . grpcenv.sh
 
-rm -rf  java/src/main/java/*
-mkdir -p java/src/main/java
+rm -rf  python/src
+mkdir -p python/src
 
-${TMPLT_PROTOC} \
-  -I${TMPLT_PROTOC_IMPORTS} \
+python \
+  -m grpc_tools.protoc \
   -I${TMPL_PROTOS} \
-  --plugin=protoc-gen-grpc-java=${TMPL_JAVA_GRPC_GEN} \
-  --java_out=${TMPL_JAVA_OUT} \
-  --grpc-java_out=${TMPL_JAVA_OUT} \
+  --python_out=python/src \
+  --pyi_out=python/src \
+  --grpc_python_out=python/src \
   ${TMPL_PROTOS}/**/*.proto

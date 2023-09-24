@@ -11,9 +11,10 @@ from google.protobuf.internal import builder as _builder
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1ctemplate_grpc/v0/hello.proto\x12\x10template_grpc.v0\" \n\x0cHelloRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\"\x1e\n\rHelloResponse\x12\r\n\x05reply\x18\x01 \x01(\t2[\n\x0cHelloService\x12K\n\x08SayHello\x12\x1e.template_grpc.v0.HelloRequest\x1a\x1f.template_grpc.v0.HelloResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1ctemplate_grpc/v0/hello.proto\x12\x10template_grpc.v0\x1a\x19google/protobuf/any.proto\"C\n\x0cHelloRequest\x12\x10\n\x08greeting\x18\x01 \x01(\t\x12!\n\x03\x61ny\x18\x02 \x01(\x0b\x32\x14.google.protobuf.Any\"\x1e\n\rHelloResponse\x12\r\n\x05reply\x18\x01 \x01(\t2[\n\x0cHelloService\x12K\n\x08SayHello\x12\x1e.template_grpc.v0.HelloRequest\x1a\x1f.template_grpc.v0.HelloResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -21,10 +22,10 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'template_grpc.v0.hello_pb2'
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _globals['_HELLOREQUEST']._serialized_start=50
-  _globals['_HELLOREQUEST']._serialized_end=82
-  _globals['_HELLORESPONSE']._serialized_start=84
-  _globals['_HELLORESPONSE']._serialized_end=114
-  _globals['_HELLOSERVICE']._serialized_start=116
-  _globals['_HELLOSERVICE']._serialized_end=207
+  _globals['_HELLOREQUEST']._serialized_start=77
+  _globals['_HELLOREQUEST']._serialized_end=144
+  _globals['_HELLORESPONSE']._serialized_start=146
+  _globals['_HELLORESPONSE']._serialized_end=176
+  _globals['_HELLOSERVICE']._serialized_start=178
+  _globals['_HELLOSERVICE']._serialized_end=269
 # @@protoc_insertion_point(module_scope)

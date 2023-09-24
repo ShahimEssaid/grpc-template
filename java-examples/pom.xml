@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.essaid.grpc</groupId>
-    <artifactId>com.essaid.grpc.grpc-template-client</artifactId>
+    <artifactId>com.essaid.grpc.grpc-template-examples</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <!-- <parent>   here if needed. -->

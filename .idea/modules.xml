@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/template-grpc.iml" filepath="$PROJECT_DIR$/.idea/template-grpc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/grpc-template.iml" filepath="$PROJECT_DIR$/.idea/grpc-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python-examples/python-examples.iml" filepath="$PROJECT_DIR$/python-examples/python-examples.iml" />
     </modules>
   </component>
 </project>

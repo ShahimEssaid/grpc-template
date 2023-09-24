@@ -1,4 +1,4 @@
-package template.server;
+package template.examples;
 
 import io.grpc.*;
 import io.grpc.stub.StreamObserver;
@@ -34,7 +34,7 @@ public class ServerExample {
     private void start() throws IOException {
         ServerCredentials credentials = InsecureServerCredentials.create();
         ServerBuilder<?> serverBuilder = Grpc.newServerBuilderForPort(9090, credentials);
-        serverBuilder.addService(new Service());
+        serverBuilder.addService(new ServiceImpl());
         server = serverBuilder.build();
         server.start();
     }
@@ -46,12 +46,3 @@ public class ServerExample {
 
 }
 
-class Service extends HelloServiceGrpc.HelloServiceImplBase {
-
-    @Override
-    public void sayHello(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> responseObserver) {
-        Hello.HelloResponse response = Hello.HelloResponse.newBuilder().setReply("Reply of: " + request.getGreeting()).build();
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
-    }
-}
