@@ -36,7 +36,6 @@ TMPL_PYTHON_TOOLS=grpcio-tools
 # =============================================================================
 # Node
 TMPL_NODE_TOOLS=grpc-tools@${TMPL_NODE_TOOLS_VER}
-TMPL_NODE_OUT=${TMPL_PROJECT}/node
 
 # =============================================================================
 # Web
