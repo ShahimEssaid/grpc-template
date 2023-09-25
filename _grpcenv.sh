@@ -32,7 +32,6 @@ TMPL_JAVA_GRPC_GEN=${TMPL_TOOLS}/protoc-gen-grpc-java-${TMPL_JAVA_GRPC_VER}
 # =============================================================================
 # Python
 TMPL_PYTHON_TOOLS=grpcio-tools
-TMPL_PYTHON_OUT=${TMPL_PROJECT}/python/src
 
 # =============================================================================
 # Node
