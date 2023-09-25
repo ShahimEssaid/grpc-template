@@ -6,7 +6,6 @@ set -o pipefail
 set -o noclobber
 shopt -s nullglob
 shopt -s globstar
-
 # stack overflow #59895
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -14,12 +13,17 @@ while [ -h "$SOURCE" ]; do
     SOURCE="$(readlink "$SOURCE")"
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
-cd "$DIR"/..
-. .env
+TMPL_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
-# https://stackoverflow.com/questions/148451/how-to-use-sed-to-replace-only-the-first-occurrence-in-a-file
-. versions
-sed -i "0,/<\/version>/{s/<version>.*<\/version>/<version>${MVN_VER}<\/version>/}" java/pom.xml
-#sed -i "0,/description/{s/version = \".*\"/version = \"${PY_VER}\"/}" python/pyproject.toml
-#sed -i "0,/description/{s/version\": \".*\"/version\": \"${PY_VER}\"/}" web/package.json
+while [[ ! -r _grpcenv.sh ]]; do
+  cd ..
+done
+
+. _grpcenv.sh
+
+cd "${TMPL_DIR}/.."
+
+sed -i "0,/<\/version>/{s/<version>.*<\/version>/<version>${TMPL_PROJECT_VER_MVN}<\/version>/}" java/pom.xml
+sed -i "0,/description/{s/version = \".*\"/version = \"${TMPL_PROJECT_VER_PYTHON}\"/}" python/pyproject.toml
+sed -i "0,/description/{s/version\": \".*\"/version\": \"${TMPL_PROJECT_VER_NODE}\"/}" node/package.json
+sed -i "0,/description/{s/version\": \".*\"/version\": \"${TMPL_PROJECT_VER_WEB}\"/}" web/package.json
