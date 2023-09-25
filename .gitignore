@@ -1,9 +1,6 @@
-grpcenv-local.sh
-
 target/
 .venv/
-.grpcenv/
-/java/.mvn/wrapper/maven-wrapper.jar
+_grpcenv/
 dist/
 node_modules/
-/java-examples/.mvn/wrapper/maven-wrapper.jar
+_hello_world/

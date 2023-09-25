@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/web" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/web-example" libraries="{template-grpc/web/.venv/lib/node_modules}" />
+    <file url="file://$PROJECT_DIR$/_template/web" libraries="{Node.js Core}" />
     <excludedPredefinedLibrary name="HTML" />
-    <excludedPredefinedLibrary name="template-grpc/.grpcenv/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/.grpcenv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/.grpcenv/src/node-v18.18.0-linux-x64/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node-examples/.venv/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node-examples/.venv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node-examples/.venv/src/node-v20.7.0-linux-x64/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node-examples/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node/.venv/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node/.venv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node/.venv/src/node-v20.7.0-linux-x64/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/node/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/python-examples/.venv/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/python-examples/.venv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/python-examples/.venv/src/node-v18.18.0-linux-x64/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/web-example/.venv/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/web-example/.venv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/web-example/.venv/src/node-v20.7.0-linux-x64/lib/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/web/.venv/lib64/node_modules" />
-    <excludedPredefinedLibrary name="template-grpc/web/.venv/src/node-v20.7.0-linux-x64/lib/node_modules" />
   </component>
 </project>

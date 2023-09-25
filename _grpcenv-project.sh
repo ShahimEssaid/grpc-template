@@ -1,0 +1,3 @@
+
+TMPL_TEMPLATE=_template
+TMPL_PROJECT=_hello_world

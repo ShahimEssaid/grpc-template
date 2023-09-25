@@ -6,12 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="com.essaid.grpc.grpc-template" />
-        <module name="com.essaid.grpc.grpc-template-examples" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="com.essaid.grpc.grpc-template" target="11" />
       <module name="com.essaid.grpc.grpc-template-client" target="11" />
+      <module name="com.essaid.grpc.grpc-template-examples" target="11" />
       <module name="com.essaid.grpc.grpc-template-server" target="11" />
       <module name="java-client" target="11" />
       <module name="java-server" target="11" />
