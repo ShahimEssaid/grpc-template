@@ -19,33 +19,25 @@ fi
 
 . "${TMPL_PROJECT}/etc/env.sh"
 
-# =====================
 # Tooling
 TMPL_TOOLS=${TMPL_ROOT}/_tools/${HOSTTYPE}_${OSTYPE}
 TMPL_PROTOC=${TMPL_TOOLS}/protoc_${TMPL_PROTOC_VER}
 TMPL_PROTOC_IMPORTS=${TMPL_ROOT}/_tools/imports/protoc_${TMPL_PROTOC_VER}
 
-# =============================================================================
 # Java
 TMPL_JAVA_GRPC_GEN=${TMPL_TOOLS}/protoc-gen-grpc-java-${TMPL_JAVA_GRPC_VER}
 
-# =============================================================================
 # Python
 TMPL_PYTHON_TOOLS=grpcio-tools
 
-# =============================================================================
 # Node
 TMPL_NODE_TOOLS=grpc-tools@${TMPL_NODE_TOOLS_VER}
 
-# =============================================================================
 # Web
-
 TMPL_WEB_GRPC_GEN=${TMPL_TOOLS}/protoc-gen-grpc-web-${TMPL_WEB_GRPC_VER}
 TMPL_WEB_JS_GEN=${TMPL_TOOLS}/protoc-gen-js-${TMPL_WEB_JS_VER}
-TMPL_WEB_OUT=${TMPL_PROJECT}/web
 
 
-# =============================================================================
 # Setting up the virtual environment for the protos compile
 if [[ ${TMPL_SETUP} == setup || ! -d _grpcenv ]]; then
     if [[ ! -d _grpcenv ]]; then

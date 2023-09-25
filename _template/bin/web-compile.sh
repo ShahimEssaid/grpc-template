@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-
+#set -x
+set -e
+set -u
+set -o pipefail
+set -o noclobber
+shopt -s nullglob
+shopt -s globstar
 # stack overflow #59895
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do
@@ -7,23 +13,23 @@ while [ -h "$SOURCE" ]; do
     SOURCE="$(readlink "$SOURCE")"
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+TMPL_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
 while [[ ! -r _grpcenv.sh ]]; do
   cd ..
 done
+
 . _grpcenv.sh
 
-rm -rf  web/../${TMPL_WEB_OUT}
-mkdir -p web/../${TMPL_WEB_OUT}
+cd "${TMPL_DIR}/.."
 
 set -x
 ${TMPL_PROTOC} \
   -I${TMPL_PROTOC_IMPORTS} \
-  -I${TMPL_PROJECT_IMPORTS} \
-  -I${TMPL_PROJECT_PROTOS} \
+  -Iproto-imports \
+  -Iprotos \
   --plugin=protoc-gen-js=${TMPL_WEB_JS_GEN} \
   --plugin=protoc-gen-grpc-web=${TMPL_WEB_GRPC_GEN} \
-  --js_out=import_style=commonjs:${TMPL_WEB_OUT} \
-  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:${TMPL_WEB_OUT} \
-  ${TMPL_PROJECT_PROTOS}/**/*.proto
+  --js_out=import_style=commonjs:web \
+  --grpc-web_out=import_style=commonjs,mode=grpcwebtext:web \
+  protos/**/*.proto
