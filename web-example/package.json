@@ -1,0 +1,26 @@
+{
+  "name": "grpc-template-web-example",
+  "version": "0.0.1",
+  "description": "My webpack project",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack --mode development",
+    "dev": "webpack serve --mode development",
+
+    "start": "webpack serve --open",
+    "watch": "webpack --watch",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.3",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "grpc-template-web": "file:grpc-template-web-0.0.1.tgz"
+  }
+}

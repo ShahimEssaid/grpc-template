@@ -1,0 +1,10 @@
+services:
+  enovy:
+    image: envoyproxy/envoy:contrib-v1.27-latest
+    ports:
+      - "8888:8888"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+

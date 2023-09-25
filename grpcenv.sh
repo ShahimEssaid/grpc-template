@@ -50,13 +50,27 @@ TMPL_JAVA_OUT=${TMPL_JAVA_OUT:-java/src/main/java}
 TMPL_PYTHON_TOOLS=${TMPL_PYTHON_TOOLS:-grpcio-tools}
 TMPL_PYTHON_TOOLS_VER=${TMPL_PYTHON_TOOLS_VER:-1.58.0}
 TMPL_PYTHON_POETRY_VER=${TMPL_PYTHON_POETRY_VER:-1.6.1}
+TMPL_PYTHON_OUT=${TMPL_PYTHON_OUT:-python/src}
 
 
 # =============================================================================
 # Node
-TMPL_NODE_TOOLS=grpc-tools
-TMPL_NODE_TOOLS_VER=1.12.4
+TMPL_NODE_TOOLS_VER=${TMPL_NODE_TOOLS_VER:-1.12.4}
+TMPL_NODE_TOOLS=${TMPL_NODE_TOOLS:-grpc-tools@${TMPL_NODE_TOOLS_VER}}
+TMPL_NODE_OUT=${TMPL_NODE_OUT:-node/src}
 
+
+# =============================================================================
+
+# =============================================================================
+# Web
+TMPL_WEB_GRPC_VER=${TMPL_WEB_GRPC_VER:-1.4.2}
+TMPL_WEB_GRPC_GEN=${TMPLT_GRPC_TOOLS}/protoc-gen-grpc-web-${TMPL_WEB_GRPC_VER}
+
+TMPL_WEB_JS_VER=${TMPL_WEB_JS_VER:-3.21.2}
+TMPL_WEB_JS_GEN=${TMPLT_GRPC_TOOLS}/protoc-gen-js-${TMPL_WEB_JS_VER}
+
+TMPL_WEB_OUT=${TMPL_WEB_OUT:-web/src}
 
 
 # =============================================================================
@@ -88,7 +102,7 @@ if [[ ${TMPLT_GRPCENV:-setup} == setup || ! -d .grpcenv ]]; then
       echo "Installing nodejs LTS"
       nodeenv -p -n lts
     fi
-    (npm list -g | grep "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}") > /dev/null || { echo "Running npm install -g "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}"";  npm install -g "${TMPL_NODE_TOOLS}@${TMPL_NODE_TOOLS_VER}"; }
+    (npm list -g | grep "${TMPL_NODE_TOOLS}") > /dev/null || { echo "Running npm install -g "${TMPL_NODE_TOOLS}"";  npm install -g "${TMPL_NODE_TOOLS}"; }
 fi
 
 set +u  # needed to avoid errors

@@ -22,7 +22,7 @@ if [[ ! -d .venv ]]; then
   . .venv/bin/activate
   pip install -U pip nodeenv
   nodeenv -p
-  rm grpc-template-node-*.tgz
+  rm -rf grpc-template-node-*.tgz
   npm pack ../node
   npm install grpc-template-node-*.tgz
 fi

@@ -9,6 +9,8 @@ class ServiceImpl extends HelloServiceGrpc.HelloServiceImplBase {
 
     @Override
     public void sayHello(Hello.HelloRequest request, StreamObserver<Hello.HelloResponse> responseObserver) {
+        System.out.println("Server received: "+request.getGreeting());
+        System.out.flush();
         Hello.HelloResponse response = Hello.HelloResponse.newBuilder().setReply("Reply of: " + request.getGreeting()).build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
