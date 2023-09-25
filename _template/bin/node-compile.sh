@@ -25,8 +25,8 @@ cd "${TMPL_DIR}/.."
 
 grpc_tools_node_protoc \
   -I${TMPL_PROTOC_IMPORTS} \
-  -Iproto-imports \
-  -Iprotos \
+  -Iprotos/imports \
+  -Iprotos/src \
   --js_out=import_style=commonjs,binary:node \
   --grpc_out=grpc_js:node \
-  protos/**/*.proto
+  protos/src/**/*.proto

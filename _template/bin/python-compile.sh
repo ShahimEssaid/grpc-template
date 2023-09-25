@@ -28,9 +28,9 @@ mkdir -p python/src
 
 python \
   -m grpc_tools.protoc \
-  -Iproto-imports \
-  -Iprotos \
+  -Iprotos/imports \
+  -Iprotos/src \
   --python_out=python/src \
   --pyi_out=python/src \
   --grpc_python_out=python/src \
-  protos/**/*.proto
+  protos/src/**/*.proto

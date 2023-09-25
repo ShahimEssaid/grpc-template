@@ -28,9 +28,9 @@ mkdir -p java/src/main/java
 
 ${TMPL_PROTOC} \
   -I${TMPL_PROTOC_IMPORTS} \
-  -Iproto-imports \
-  -Iprotos \
+  -Iprotos/imports \
+  -Iprotos/src \
   --plugin=protoc-gen-grpc-java=${TMPL_JAVA_GRPC_GEN} \
   --java_out=java/src/main/java \
   --grpc-java_out=java/src/main/java \
-  protos/**/*.proto
+  protos/src/**/*.proto
