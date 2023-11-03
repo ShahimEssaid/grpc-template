@@ -14,7 +14,7 @@ while [[ ! -r _grpcenv.sh ]]; do
 done
 #. _grpcenv.sh
 
-cd web-example
+cd web
 
 if [[ ! -d .venv ]]; then
   python3 -m venv .venv
@@ -22,12 +22,8 @@ if [[ ! -d .venv ]]; then
   . .venv/bin/activate
   pip install -U pip nodeenv
   nodeenv -p
+  npm install
 fi
-. .venv/bin/activate
-npm pack ../web
-npm install grpc-template-web-0.0.1.tgz
-npm install
-
 
 
 

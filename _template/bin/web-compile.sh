@@ -13,7 +13,7 @@ while [ -h "$SOURCE" ]; do
     SOURCE="$(readlink "$SOURCE")"
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-TMPL_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+TMPL_BIN="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
 while [[ ! -r _grpcenv.sh ]]; do
   cd ..
@@ -21,7 +21,7 @@ done
 
 . _grpcenv.sh
 
-cd "${TMPL_DIR}/.."
+cd "${TMPL_BIN}/.."
 
 set -x
 ${TMPL_PROTOC} \

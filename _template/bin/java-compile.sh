@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#set -x
+set -x
 set -e
 set -u
 set -o pipefail
@@ -13,15 +13,14 @@ while [ -h "$SOURCE" ]; do
     SOURCE="$(readlink "$SOURCE")"
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-TMPL_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+TMPL_BIN="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
+# TODO
 while [[ ! -r _grpcenv.sh ]]; do
   cd ..
 done
 
 . _grpcenv.sh
-
-cd "${TMPL_DIR}/.."
 
 rm -rf  java/src/main/java/*
 mkdir -p java/src/main/java

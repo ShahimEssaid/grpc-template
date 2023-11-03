@@ -1,5 +1,9 @@
-[[ -r "${TMPL_PROJECT}/etc/env-local.sh" ]] && . "${TMPL_PROJECT}/etc/env-local.sh"
+# A Git ignored local file can be used to set values
+[[ -r "etc/env-local.sh" ]] && . "etc/env-local.sh"
 
+# A flag variable to indicate if the setup code should run with each script.
+# Running the setup code slows down scripts, so it can be turned off with this variable.
+#
 TMPL_SETUP=${TMPL_SETUP:-setup}
 
 TMPL_PROJECT_VER=0.0.55

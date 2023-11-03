@@ -23,7 +23,13 @@ done
 
 cd "${TMPL_BIN}/.."
 
-sed -i "0,/<\/version>/{s/<version>.*<\/version>/<version>${TMPL_PROJECT_VER_MVN}<\/version>/}" java/pom.xml
-sed -i "0,/description/{s/version = \".*\"/version = \"${TMPL_PROJECT_VER_PYTHON}\"/}" python/pyproject.toml
-sed -i "0,/description/{s/version\": \".*\"/version\": \"${TMPL_PROJECT_VER_NODE}\"/}" commonjs-binary/package.json
-sed -i "0,/description/{s/version\": \".*\"/version\": \"${TMPL_PROJECT_VER_WEB}\"/}" web/package.json
+set -x
+${TMPL_PROTOC} \
+  -I${TMPL_PROTOC_IMPORTS} \
+  -Iprotos/imports \
+  -Iprotos/src \
+  --plugin=protoc-gen-js=${TMPL_WEB_JS_GEN} \
+  --plugin=protoc-gen-grpc-web=${TMPL_WEB_GRPC_GEN} \
+  --js_out=import_style=commonjs:web+dts \
+  --grpc-web_out=import_style=commonjs+dts,mode=grpcwebtext:web+dts \
+  protos/src/**/*.proto

@@ -1,10 +1,11 @@
-const m = require('grpc-template-web/src/grpc_template/v0/hello_pb');
-const s = require('grpc-template-web/src/grpc_template/v0/hello_grpc_web_pb');
+const web_example = require('grpc-template-web');
+// const s = require('grpc-template-web/v0/hello_grpc_web_pb');
 
-var request = new m.HelloRequest();
+
+var request = new web_example.v0.HelloRequest();
 request.setGreeting('Hello')
 
-var client = new s.HelloServiceClient('http://localhost:8888', null, null);
+var client = new web_example.v0.HelloServiceClient('http://localhost:8888', null, null);
 
 var call = client.sayHello(request, null, function (err, response){
     console.log(response.getReply());

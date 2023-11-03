@@ -13,7 +13,7 @@ while [ -h "$SOURCE" ]; do
     SOURCE="$(readlink "$SOURCE")"
     [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
 done
-TMPL_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+TMPL_BIN="$(cd -P "$(dirname "$SOURCE")" && pwd)"
 
 while [[ ! -r _grpcenv.sh ]]; do
   cd ..
@@ -21,8 +21,10 @@ done
 
 . _grpcenv.sh
 
-cd "${TMPL_DIR}/.."
+cd "${TMPL_BIN}/.."
 
+# this command is from the _grpcenv virtual environment
+# https://github.com/grpc/grpc-node/tree/master/examples/helloworld/static_codegen
 grpc_tools_node_protoc \
   -I${TMPL_PROTOC_IMPORTS} \
   -Iprotos/imports \

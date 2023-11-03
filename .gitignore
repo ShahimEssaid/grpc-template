@@ -1,6 +1,6 @@
 target/
 .venv/
-_grpcenv/
+*_venv/
 dist/
 node_modules/
 _hello_world/

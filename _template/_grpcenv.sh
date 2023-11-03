@@ -12,19 +12,15 @@ TMPL_ROOT=$(pwd)
 #  variables that are used to build other variables, if any.
 . _grpcenv-project.sh
 
-TMPL_TEMPLATE=${TMPL_ROOT}/${TMPL_TEMPLATE}
-TMPL_PROJECT=${TMPL_ROOT}/${TMPL_PROJECT}
 
-if [[ ! -d ${TMPL_PROJECT} ]]; then
-  cp -a  "${TMPL_TEMPLATE}" "${TMPL_PROJECT}"
-fi
 
-. "${TMPL_PROJECT}/etc/env.sh"
+. "${TMPL_ROOT}/etc/env.sh"
 
 # Tooling
-TMPL_TOOLS=${TMPL_ROOT}/_tools/${HOSTTYPE}_${OSTYPE}
+
+TMPL_TOOLS=$(realpath ${TMPL_ROOT}/../_tools/${HOSTTYPE}_${OSTYPE})
 TMPL_PROTOC=${TMPL_TOOLS}/protoc_${TMPL_PROTOC_VER}
-TMPL_PROTOC_IMPORTS=${TMPL_ROOT}/_tools/imports/protoc_${TMPL_PROTOC_VER}
+TMPL_PROTOC_IMPORTS=$(realpath ${TMPL_ROOT}/../_tools/imports/protoc_${TMPL_PROTOC_VER})
 
 # Java
 TMPL_JAVA_GRPC_GEN=${TMPL_TOOLS}/protoc-gen-grpc-java-${TMPL_JAVA_GRPC_VER}
@@ -39,17 +35,20 @@ TMPL_NODE_TOOLS=grpc-tools@${TMPL_NODE_TOOLS_VER}
 TMPL_WEB_GRPC_GEN=${TMPL_TOOLS}/protoc-gen-grpc-web-${TMPL_WEB_GRPC_VER}
 TMPL_WEB_JS_GEN=${TMPL_TOOLS}/protoc-gen-js-${TMPL_WEB_JS_VER}
 
+TMPL_VENV_PATH="${TMPL_ROOT}/../$(basename $(pwd))_venv"
+mkdir -p "${TMPL_VENV_PATH}"
+TMPL_VENV_PATH="$(realpath "${TMPL_VENV_PATH}" )"
 
 # Setting up the virtual environment for the protos compile
-if [[ ${TMPL_SETUP:-} == setup || ! -d _grpcenv ]]; then
-    if [[ ! -d _grpcenv ]]; then
-      python3 -m venv _grpcenv
-      . _grpcenv/bin/activate
+if [[ ${TMPL_SETUP:-} == setup || ! -d ${TMPL_VENV_PATH} ]]; then
+    if [[ ! -r ${TMPL_VENV_PATH}/bin/activate ]]; then
+      python3 -m venv "${TMPL_VENV_PATH}"
+      . "${TMPL_VENV_PATH}/bin/activate"
       pip install -U pip
     fi
 
     set +u
-    . _grpcenv/bin/activate
+    . "${TMPL_VENV_PATH}/bin/activate"
     set -u
 
     ##  Python related
@@ -71,10 +70,10 @@ if [[ ${TMPL_SETUP:-} == setup || ! -d _grpcenv ]]; then
 fi
 
 set +u  # needed to avoid errors
-. _grpcenv/bin/activate
+. "${TMPL_VENV_PATH}/bin/activate"
 set -u
 
-if [[ -n ${DEBUG:-} ]]; then
+if [[ -n ${TMPL_DEBUG:-} ]]; then
   ( set -o posix ; set ) | sort | grep TMPL_
 fi
 
